@@ -18,9 +18,13 @@ const filmsStore = useFilmsStore()
 onServerPrefetch(async () => {
   await filmsStore.fetchStarWarsMovies()
 })
-onMounted(async () => {
-  if (!filmsStore.films) {
-    await filmsStore.fetchStarWarsMovies()
-  }
-})
+
+// onMounted(async () => {
+//   console.log('==>', 'list onMounted : ', filmsStore.films)
+
+//   if (!filmsStore.films) {
+//     console.log('==>', 'get list on browser side!')
+//     await filmsStore.fetchStarWarsMovies()
+//   }
+// })
 </script>

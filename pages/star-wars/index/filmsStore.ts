@@ -40,9 +40,9 @@ export const useFilmsStore = defineStore({
   //   }
 
   // },
-  // persist: {
-  //   paths: ['films'],
-  // }
+  persist: {
+    paths: ['films'],
+  }
 
 //   persist: {
 //     storage: localStorage,

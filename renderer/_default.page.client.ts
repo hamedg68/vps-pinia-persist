@@ -14,9 +14,8 @@ export { onPageTransitionEnd }
 let app: any
 async function render(pageContext: PageContextBuiltInClient & PageContext) {
   if (!app) {
-    const instance = createApp(pageContext)
+    const instance = await createApp(pageContext)
     app = instance.app    
-    instance.store.state.value = pageContext.initialStoreState
     app.mount('#app')
   } else {
     app.changePage(pageContext)

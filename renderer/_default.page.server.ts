@@ -8,15 +8,15 @@ import { useFilmsStore } from '../pages/star-wars/index/filmsStore'
 
 export { passToClient }
 export { render }
-export { onBeforeRender }
+// export { onBeforeRender }
 
 const passToClient = ['initialStoreState', 'pageProps', 'routeParams']
 
 async function render(pageContext: PageContextBuiltIn & PageContext) {
-  const { app, store } = createApp(pageContext)
+  const { app, store } = await createApp(pageContext)
 
   const stream = renderToNodeStream(app)
-
+  
   const initialStoreState = store.state.value
 
   const documentHtml = escapeInject`<!DOCTYPE html>
@@ -36,7 +36,7 @@ async function render(pageContext: PageContextBuiltIn & PageContext) {
   }
 }
 
-async function onBeforeRender() {
+//async function onBeforeRender() {
   // const store = useFilmsStore()
 
   // await store.fetchStarWarsMovies()
@@ -52,7 +52,7 @@ async function onBeforeRender() {
   //     // documentProps: { title: getTitle(movies) }
   //   }
   // }
-}
+//}
 
 
 

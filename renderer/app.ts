@@ -1,13 +1,14 @@
-import { createPinia } from 'pinia'
+import { createPinia, Pinia } from 'pinia'
 import { createSSRApp, defineComponent, h, markRaw, reactive } from 'vue'
 import PageShell from './PageShell.vue'
 import type { Component, PageContext } from './types'
 import { setPageContext } from './usePageContext'
-import { createPersistedStatePlugin } from 'pinia-plugin-persistedstate-2'
+import { createPersistedState } from 'pinia-plugin-persistedstate'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 export { createApp }
 
-function createApp(pageContext: PageContext) {
+async function createApp(pageContext: PageContext) {
   const { Page } = pageContext
 
   let rootComponent: Component
@@ -34,13 +35,19 @@ function createApp(pageContext: PageContext) {
 
   const app = createSSRApp(PageWithWrapper)
   const store = createPinia()
-  if (pageContext.isHydration) {
-    const installPersistedStatePlugin = createPersistedStatePlugin()
-    store.use((context) => installPersistedStatePlugin(context))
-  }
-  // store.use(piniaPluginPersistedstate)
   app.use(store)
 
+  
+  if (pageContext.isHydration) {
+    // store.use(piniaPluginPersistedstate)
+   
+    store.state.value = pageContext.initialStoreState
+    addPiniaPersist(store).then(() => {
+    
+    })
+  } 
+
+  
   // We use `app.changePage()` to do Client Routing, see `_default.page.client.js`
   objectAssign(app, {
     changePage: (pageContext: PageContext) => {
@@ -63,4 +70,14 @@ function createApp(pageContext: PageContext) {
 // Same as `Object.assign()` but with type inference
 function objectAssign<Obj, ObjAddendum>(obj: Obj, objAddendum: ObjAddendum): asserts obj is Obj & ObjAddendum {
   Object.assign(obj, objAddendum)
+}
+
+function addPiniaPersist(store: Pinia) {
+  const installPersistedStatePlugin = createPersistedState()
+  return new Promise<void>((resolve, reject) => {
+    store.use((context) => {
+      installPersistedStatePlugin(context)
+      resolve()
+    })
+  })
 }
