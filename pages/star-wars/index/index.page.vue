@@ -19,12 +19,12 @@ onServerPrefetch(async () => {
   await filmsStore.fetchStarWarsMovies()
 })
 
-// onMounted(async () => {
-//   console.log('==>', 'list onMounted : ', filmsStore.films)
+onMounted(async () => {
+  console.log('==>', 'list onMounted : ', filmsStore.films)
 
-//   if (!filmsStore.films) {
-//     console.log('==>', 'get list on browser side!')
-//     await filmsStore.fetchStarWarsMovies()
-//   }
-// })
+  if (!filmsStore.films) {
+    console.log('==>', 'get list on browser side!')
+    await filmsStore.fetchStarWarsMovies()
+  }
+})
 </script>
