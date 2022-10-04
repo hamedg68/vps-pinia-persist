@@ -5,9 +5,7 @@
         <img src="./logo.svg" height="64" width="64" />
       </a>
       <Link href="/">Welcome</Link>
-      <Link href="/markdown">Markdown</Link>
       <Link href="/star-wars">Data Fetching</Link>
-      <Link href="/hello/alice">Routing</Link>
     </div>
     <div class="content"><slot /></div>
   </div>

@@ -32,26 +32,10 @@ export const useFilmsStore = defineStore({
       this.films = this.filterMoviesData(movies)
     }
   },
-  // hydrate(storeState, initialState) {
-  //   console.log(storeState);
-  //   console.log(initialState);
-  //   this.persist = {
-  //     paths: ['films']
-  //   }
 
-  // },
   persist: {
     paths: ['films'],
   }
 
-//   persist: {
-//     storage: localStorage,
-//     paths: ['films' ],
-//     beforeRestore: context => {
-//         console.log('Before hydration...')
-//     },
-//     afterRestore: context => {
-//         console.log('After hydration...')
-//     },
-// },
+
 })

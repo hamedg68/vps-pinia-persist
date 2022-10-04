@@ -37,17 +37,13 @@ async function createApp(pageContext: PageContext) {
   const store = createPinia()
   app.use(store)
 
-  
-  if (pageContext.isHydration) {
-    // store.use(piniaPluginPersistedstate)
-   
-    store.state.value = pageContext.initialStoreState
-    addPiniaPersist(store).then(() => {
-    
-    })
-  } 
 
-  
+  if (pageContext.isHydration) {
+    const installPersistedStatePlugin = createPersistedState()
+    store.use((context) => {installPersistedStatePlugin(context)})
+  }
+
+
   // We use `app.changePage()` to do Client Routing, see `_default.page.client.js`
   objectAssign(app, {
     changePage: (pageContext: PageContext) => {

@@ -4,7 +4,6 @@ import { createApp } from './app'
 import { getPageTitle } from './getPageTitle'
 import type { PageContext } from './types'
 import type { PageContextBuiltIn } from 'vite-plugin-ssr'
-import { useFilmsStore } from '../pages/star-wars/index/filmsStore'
 
 export { passToClient }
 export { render }
