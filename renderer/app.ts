@@ -1,10 +1,9 @@
-import { createPinia, Pinia } from 'pinia'
+import { createPinia } from 'pinia'
 import { createSSRApp, defineComponent, h, markRaw, reactive } from 'vue'
 import PageShell from './PageShell.vue'
 import type { Component, PageContext } from './types'
 import { setPageContext } from './usePageContext'
-import { createPersistedState } from 'pinia-plugin-persistedstate'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import { createPersistedStatePlugin } from 'pinia-plugin-persistedstate-2'
 
 export { createApp }
 
@@ -39,8 +38,8 @@ async function createApp(pageContext: PageContext) {
 
 
   if (pageContext.isHydration) {
-    const installPersistedStatePlugin = createPersistedState()
-    store.use((context) => {installPersistedStatePlugin(context)})
+    const installPersistedStatePlugin = createPersistedStatePlugin()
+    store.use((context) => { installPersistedStatePlugin(context) })
   }
 
 
@@ -66,14 +65,4 @@ async function createApp(pageContext: PageContext) {
 // Same as `Object.assign()` but with type inference
 function objectAssign<Obj, ObjAddendum>(obj: Obj, objAddendum: ObjAddendum): asserts obj is Obj & ObjAddendum {
   Object.assign(obj, objAddendum)
-}
-
-function addPiniaPersist(store: Pinia) {
-  const installPersistedStatePlugin = createPersistedState()
-  return new Promise<void>((resolve, reject) => {
-    store.use((context) => {
-      installPersistedStatePlugin(context)
-      resolve()
-    })
-  })
 }

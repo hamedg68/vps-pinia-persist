@@ -728,10 +728,12 @@ picomatch@^2.2.2, picomatch@^2.3.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
-pinia-plugin-persistedstate@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-2.1.1.tgz#584c416cdc278689ae9d49483621ec96dcb7d6ef"
-  integrity sha512-HUgsU5IRtM75eAQiIqzT3p1oPEuYH1/B2ipTMU++yE+FV0LkHaBswdKXs0RMWYCmugO8s62oxLTh/N1dLNp+5A==
+pinia-plugin-persistedstate-2@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/pinia-plugin-persistedstate-2/-/pinia-plugin-persistedstate-2-2.0.1.tgz#3d12301acbd40c427f91c38c0a637f19826f5840"
+  integrity sha512-xtX2YOahow7MLrKSKuLQKE3VNJ8JQkfRgTCJ+T9rggiRDDhBQMg1usZ+LP3km9iOnJsR8JofA60g6cL63gsg5A==
+  dependencies:
+    shvl "^3.0.0"
 
 pinia@^2.0.22:
   version "2.0.22"
@@ -814,6 +816,11 @@ section-matter@^1.0.0:
   dependencies:
     extend-shallow "^2.0.1"
     kind-of "^6.0.0"
+
+shvl@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/shvl/-/shvl-3.0.0.tgz#63b8e888730c24a779f8c574305924a144efc35e"
+  integrity sha512-5IomAM3ykE/g9K9L6lhODc+TpCuN03rrhlboegeKyyfh66DDdpRD5JN37DYhNHH+RaYjiIDx64K/Ms/xQYOR5w==
 
 source-map-js@^1.0.2:
   version "1.0.2"

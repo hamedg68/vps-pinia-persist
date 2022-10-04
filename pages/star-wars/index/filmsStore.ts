@@ -33,9 +33,9 @@ export const useFilmsStore = defineStore({
     }
   },
 
-  persist: {
-    paths: ['films'],
-  }
+  // persist: {
+  //   paths: ['films'],
+  // }
 
 
 })
